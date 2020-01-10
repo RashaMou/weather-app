@@ -4,7 +4,7 @@ import WeatherInfo from "./WeatherInfo";
 
 const WeatherCard = () => {
   return (
-    <div>
+    <div className="weathercard container box">
       <Search />
       <WeatherInfo />
     </div>

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import LocationContext from "../contexts/LocationContext";
 import PlacesAutocomplete, {
   geocodeByAddress,
@@ -6,7 +6,6 @@ import PlacesAutocomplete, {
 } from "react-places-autocomplete";
 
 const Search = props => {
-  // location is the human readable name, LatLng is the latitude and longitude
   const { setLocation, location, setCoordinates } = useContext(LocationContext);
 
   const handleSelect = async value => {

@@ -3,7 +3,10 @@ import LocationContext from "./LocationContext";
 
 const GlobalState = props => {
   const [location, setLocation] = useState("");
-  const [coordinates, setCoordinates] = useState({});
+  const [coordinates, setCoordinates] = useState({
+    lat: 39.952583,
+    lng: -75.165222
+  });
 
   return (
     <LocationContext.Provider
