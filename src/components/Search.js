@@ -1,17 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import LocationContext from "../contexts/LocationContext";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from "react-places-autocomplete";
 
 const Search = props => {
-  const [location, setLocation] = useState("");
+  // location is the human readable name, LatLng is the latitude and longitude
+  const { setLocation, location, setCoordinates } = useContext(LocationContext);
 
   const handleSelect = async value => {
     const results = await geocodeByAddress(value);
     const latLng = await getLatLng(results[0]);
-    // setLocation(value);
-    // props.setCenter(latLng);
+    setCoordinates(latLng);
   };
 
   const handleChange = value => {
@@ -35,7 +36,7 @@ const Search = props => {
           <div>
             <input
               {...getInputProps({
-                placeholder: "Search Places ...",
+                placeholder: "Search...",
                 className: "location-search-input"
               })}
             />
@@ -45,7 +46,6 @@ const Search = props => {
                 const className = suggestion.active
                   ? "suggestion-item--active"
                   : "suggestion-item";
-                // inline style for demonstration purpose
                 const style = suggestion.active
                   ? { backgroundColor: "#fafafa", cursor: "pointer" }
                   : { backgroundColor: "#ffffff", cursor: "pointer" };
@@ -63,35 +63,6 @@ const Search = props => {
             </div>
           </div>
         )}
-        {/* {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div className="search-container">
-            <label htmlFor="search"></label>
-            <div className="search-wrapper">
-              <input
-                className="search"
-                name="search"
-                placeholder="Enter location"
-                {...getInputProps()}
-              />
-            </div>
-            {suggestions.length > 0 && (
-              <div className="suggestions-box">
-                {loading ? <div>...loading</div> : null}
-
-                {suggestions.map(suggestion => {
-                  return (
-                    <div
-                      {...getSuggestionItemProps(suggestion)}
-                      className="suggestions"
-                    >
-                      {suggestion.description}
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </div>
-        )} */}
       </PlacesAutocomplete>
     </>
   );
