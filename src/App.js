@@ -4,7 +4,6 @@ import Map from "./components/Map";
 import WeatherCard from "./components/WeatherCard";
 
 function App() {
-  let key = "AIzaSyBcv2QVgQ6oRSdKqZDOKxAGAicxoEBZTBo";
   return (
     <div className="App" style={{ width: "100vw", height: "100vh" }}>
       <Map
