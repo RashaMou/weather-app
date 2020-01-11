@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import LocationContext from "../contexts/LocationContext";
 import PlacesAutocomplete, {
@@ -11,10 +11,13 @@ const Search = props => {
     LocationContext
   );
 
+  const [location, setLocation] = useState("");
+
   const handleSelect = async value => {
     const results = await geocodeByAddress(value);
     const latLng = await getLatLng(results[0]);
     setCoordinates(latLng);
+    setLocation("");
     setCity(value);
     axios
       .post("http://localhost:5000/api/weather", latLng)
@@ -31,8 +34,8 @@ const Search = props => {
   return (
     <>
       <PlacesAutocomplete
-        value={city}
-        onChange={setCity}
+        value={location}
+        onChange={setLocation}
         onSelect={handleSelect}
         searchOptions={searchOptions}
         highlightFirstSuggestion={true}
