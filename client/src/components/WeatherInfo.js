@@ -1,15 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
+import React, { useContext } from "react";
 import LocationContext from "../contexts/LocationContext";
 
 const WeatherInfo = () => {
-  const { lat, lng, location } = useContext(LocationContext);
-  const [forecast, setForecast] = useState({
-    summary: "",
-    icon: "",
-    temperature: ""
-  });
-
+  const { location, forecast } = useContext(LocationContext);
   return (
     <div>
       <p>{location}</p>
