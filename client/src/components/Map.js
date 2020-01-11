@@ -1,17 +1,12 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import axios from "axios";
 import { GoogleMap, withScriptjs, withGoogleMap } from "react-google-maps";
 import LocationContext from "../contexts/LocationContext";
 
 const BackgroundMap = () => {
-  const { setCoordinates, setForecast, coordinates } = useContext(
+  const { setCoordinates, setForecast, coordinates, setCity } = useContext(
     LocationContext
   );
-
-  const [currentLoc, getCurrentLoc] = useState({
-    lat: "",
-    lng: ""
-  });
 
   let lat = coordinates.lat;
   let lng = coordinates.lng;
@@ -28,10 +23,19 @@ const BackgroundMap = () => {
 
   useEffect(() => {
     getInitialUserLocation();
+
     axios
       .post("http://localhost:5000/api/weather", { lat, lng })
       .then(res => {
         setForecast(res.data.currently);
+      })
+      .catch(err => console.log(err));
+
+    axios
+      .post("http://localhost:5000/api/reversegeocode", { lat, lng })
+      .then(res => {
+        console.log("reverse geocode res", res.data[0].formatted_address);
+        setCity(res.data[0].formatted_address);
       })
       .catch(err => console.log(err));
   }, []);
