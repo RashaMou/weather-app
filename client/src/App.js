@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import Map from "./components/Map";
 import WeatherCard from "./components/WeatherCard";
 import GlobalState from "./contexts/GlobalState";
+import LocationContext from "./contexts/LocationContext";
 
 function App() {
   const apiKey = "AIzaSyBcv2QVgQ6oRSdKqZDOKxAGAicxoEBZTBo";
+
   return (
     <GlobalState>
       <div className="background">
