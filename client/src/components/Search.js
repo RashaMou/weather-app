@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import axios from "axios";
 import LocationContext from "../contexts/LocationContext";
 import PlacesAutocomplete, {
   geocodeByAddress,
@@ -13,6 +14,12 @@ const Search = props => {
     const latLng = await getLatLng(results[0]);
     setCoordinates(latLng);
     setLocation(value);
+    axios
+      .post("http://localhost:5000/api/weather", latLng)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => console.log(err));
   };
 
   const searchOptions = {
