@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from "react";
 import axios from "axios";
 import { GoogleMap, withScriptjs, withGoogleMap } from "react-google-maps";
 import LocationContext from "../contexts/LocationContext";
+import getInitialUserLocation from "../helpers/getInitialUserLocation";
 
 const BackgroundMap = () => {
   const { setCoordinates, setForecast, coordinates, setCity } = useContext(
@@ -11,18 +12,8 @@ const BackgroundMap = () => {
   let lat = coordinates.lat;
   let lng = coordinates.lng;
 
-  let getInitialUserLocation = () => {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
-      setCoordinates(pos);
-    });
-  };
-
   useEffect(() => {
-    getInitialUserLocation();
+    getInitialUserLocation(setCoordinates);
 
     axios
       .post("http://localhost:5000/api/weather", { lat, lng })
