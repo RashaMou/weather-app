@@ -4,10 +4,9 @@ import LocationContext from "../contexts/LocationContext";
 import { GoogleMap, withScriptjs, withGoogleMap } from "react-google-maps";
 
 const BackgroundMap = () => {
-  const { coordinates } = useContext(LocationContext);
-  let lat = coordinates.lat;
-  let lng = coordinates.lng;
-  console.log(coordinates);
+  const { lat, lng } = useContext(LocationContext);
+  // let lat = coordinates.lat;
+  // let lng = coordinates.lng;
   return (
     <GoogleMap
       defaultZoom={10}

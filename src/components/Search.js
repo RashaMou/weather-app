@@ -12,9 +12,6 @@ const Search = props => {
     const results = await geocodeByAddress(value);
     const latLng = await getLatLng(results[0]);
     setCoordinates(latLng);
-  };
-
-  const handleChange = value => {
     setLocation(value);
   };
 
@@ -26,7 +23,7 @@ const Search = props => {
     <>
       <PlacesAutocomplete
         value={location}
-        onChange={handleChange}
+        onChange={setLocation}
         onSelect={handleSelect}
         searchOptions={searchOptions}
         highlightFirstSuggestion={true}

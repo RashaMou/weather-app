@@ -5,8 +5,8 @@ import WeatherInfo from "./WeatherInfo";
 const WeatherCard = () => {
   return (
     <div className="weathercard container box">
-      <Search />
       <WeatherInfo />
+      <Search />
     </div>
   );
 };

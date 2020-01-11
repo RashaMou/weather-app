@@ -8,9 +8,12 @@ const GlobalState = props => {
     lng: -75.165222
   });
 
+  const lat = coordinates.lat;
+  const lng = coordinates.lng;
+
   return (
     <LocationContext.Provider
-      value={{ location, setLocation, coordinates, setCoordinates }}
+      value={{ location, setLocation, lat, lng, setCoordinates }}
     >
       {props.children}
     </LocationContext.Provider>
