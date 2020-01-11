@@ -25,6 +25,8 @@ const GlobalState = props => {
         setCity,
         lat,
         lng,
+        setCoordinates,
+        coordinates,
         setForecast,
         forecast
       }}
