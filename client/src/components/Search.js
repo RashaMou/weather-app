@@ -7,9 +7,7 @@ import PlacesAutocomplete, {
 } from "react-places-autocomplete";
 
 const Search = props => {
-  const { setCity, city, setCoordinates, setForecast } = useContext(
-    LocationContext
-  );
+  const { setCity, setCoordinates, setForecast } = useContext(LocationContext);
 
   const [location, setLocation] = useState("");
 
