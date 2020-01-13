@@ -5,9 +5,13 @@ import LocationContext from "../contexts/LocationContext";
 import getInitialUserLocation from "../helpers/getInitialUserLocation";
 
 const BackgroundMap = () => {
-  const { setCoordinates, setForecast, coordinates, setCity } = useContext(
-    LocationContext
-  );
+  const {
+    setCoordinates,
+    setForecast,
+    coordinates,
+    setCity,
+    city
+  } = useContext(LocationContext);
 
   let lat = coordinates.lat;
   let lng = coordinates.lng;
@@ -18,6 +22,7 @@ const BackgroundMap = () => {
     axios
       .post("http://localhost:5000/api/weather", { lat, lng })
       .then(res => {
+        console.log("weather", res.data.currently);
         setForecast(res.data.currently);
       })
       .catch(err => console.log(err));
@@ -25,10 +30,12 @@ const BackgroundMap = () => {
     axios
       .post("http://localhost:5000/api/reversegeocode", { lat, lng })
       .then(res => {
-        console.log("reverse geocode res", res.data[0].formatted_address);
         setCity(res.data[0].formatted_address);
+        console.log(res.data[0].formatted_address);
       })
       .catch(err => console.log(err));
+
+    console.log("city from map useeffect", city);
   }, []);
 
   return (
