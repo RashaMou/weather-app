@@ -3,6 +3,7 @@ import LocationContext from "../contexts/LocationContext";
 
 const WeatherInfo = () => {
   const { city, forecast } = useContext(LocationContext);
+  console.log("city from weather info", city);
   return (
     <div>
       <p>{city}</p>

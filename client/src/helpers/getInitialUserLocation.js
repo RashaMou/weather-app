@@ -1,6 +1,6 @@
 const getInitialUserLocation = callback => {
-  navigator.geolocation.getCurrentPosition(function(position) {
-    var pos = {
+  navigator.geolocation.getCurrentPosition(position => {
+    const pos = {
       lat: position.coords.latitude,
       lng: position.coords.longitude
     };

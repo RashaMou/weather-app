@@ -5,8 +5,8 @@ const GlobalState = props => {
   const [city, setCity] = useState("");
 
   const [coordinates, setCoordinates] = useState({
-    lat: 39.952583,
-    lng: -75.165222
+    lat: null,
+    lng: null
   });
 
   const [forecast, setForecast] = useState({
