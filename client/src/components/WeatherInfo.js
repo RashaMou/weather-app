@@ -6,7 +6,7 @@ const WeatherInfo = () => {
   console.log("city from weather info", city);
   return (
     <div className="weather-info">
-      <p>{city}</p>
+      <p className="city">{city}</p>
       <p>{forecast.summary}</p>
       <p>{forecast.icon}</p>
       <p>{forecast.temperature}</p>

@@ -3,9 +3,16 @@
   position: fixed;
   max-width: 800px;
   width: 100%;
-  top: 50%;
+  top: 30%;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  height: 20rem;
+  border: 1px solid green;
+
+  .inner-flex {
+    display: flex;
+    justify-content: space-around;
+  }
 }
 
 .search-container {
@@ -27,8 +34,9 @@
   border-radius: 0 0 2px 2px;
   border-left: 1px solid #2c2d3e;
   border-right: 1px solid #2c2d3e;
-  // border-bottom: 1px solid #2c2d3e;
   border-top: 0;
+  position: relative;
+  z-index: 1500;
 
   .suggestion-item,
   .suggestion-item--active {
@@ -55,4 +63,23 @@
   padding: 10px;
   max-height: 2.3rem;
   margin-left: 15px;
+}
+
+.position-div {
+  position: relative;
+  width: 100%;
+  // border: 1px solid blue;
+}
+
+.weather-info {
+  // border: 1px solid red;
+  position: absolute;
+  z-index: 1300;
+  top: 100%;
+  width: 100%;
+  padding: 10px;
+
+  .city {
+    font-size: 1.5rem;
+  }
 }

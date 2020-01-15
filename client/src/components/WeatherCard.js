@@ -7,16 +7,20 @@ import { ReactComponent as MyLocation } from "../assets/icons/ui/my_location.svg
 const WeatherCard = () => {
   return (
     <div className="weathercard container box">
-      <Search />
-      <div className="icons">
-        <div className="search-button-box">
-          <SearchIcon />
+      <div className="position-div">
+        <div className="inner-flex">
+          <Search />
+          <div className="icons">
+            <div className="search-button-box">
+              <SearchIcon />
+            </div>
+            <div className="location-button-box">
+              <MyLocation />
+            </div>
+          </div>
         </div>
-        <div className="location-button-box">
-          <MyLocation />
-        </div>
+        <WeatherInfo />
       </div>
-      <WeatherInfo />
     </div>
   );
 };
