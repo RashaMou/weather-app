@@ -1,9 +1,51 @@
 .weathercard {
   z-index: 1000;
   position: fixed;
-  margin: 0 auto;
+  max-width: 800px;
+  width: 100%;
   top: 50%;
-  left: 50%;
-  margin-top: -100px;
-  margin-left: -100px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.search-container {
+  width: 80%;
+  .location-search-input {
+    width: 100%;
+    height: 2.3rem;
+    padding-left: 10px;
+  }
+}
+
+.icons {
+  display: flex;
+}
+
+.search-autocomplete-container {
+  border-bottom: honeydew;
+  border-left: honeydew;
+  border-right: honeydew;
+  border-top: 1px solid #e6e6e6;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 2px 2px;
+}
+
+.search-button-box {
+  background-color: #eaeaec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  max-height: 2.3rem;
+  margin-left: 15px;
+}
+
+.location-button-box {
+  background-color: #eaeaec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  max-height: 2.3rem;
+  margin-left: 15px;
 }

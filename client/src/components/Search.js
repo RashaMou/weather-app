@@ -39,7 +39,7 @@ const Search = props => {
         highlightFirstSuggestion={true}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div>
+          <div className="search-container">
             <input
               {...getInputProps({
                 placeholder: "Search...",

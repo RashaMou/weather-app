@@ -5,7 +5,7 @@ const WeatherInfo = () => {
   const { city, forecast } = useContext(LocationContext);
   console.log("city from weather info", city);
   return (
-    <div>
+    <div className="weather-info">
       <p>{city}</p>
       <p>{forecast.summary}</p>
       <p>{forecast.icon}</p>

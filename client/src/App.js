@@ -48,7 +48,9 @@ function App() {
         containerElement={<div style={{ height: "100%" }} />}
         mapElement={<div style={{ height: "100%" }} />}
       />
-      <WeatherCard />
+      <div className="flex-container">
+        <WeatherCard />
+      </div>
     </div>
   );
 }
