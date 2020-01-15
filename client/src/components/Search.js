@@ -5,6 +5,7 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from "react-places-autocomplete";
+import { ReactComponent as Marker } from "../assets/icons/ui/marker.svg";
 
 const Search = props => {
   const { setCity, setCoordinates, setForecast } = useContext(LocationContext);
@@ -46,7 +47,31 @@ const Search = props => {
                 className: "location-search-input"
               })}
             />
-            <div className="autocomplete-dropdown-container">
+            {location.length > 0 && (
+              <div className="autocomplete-dropdown-container">
+                {/* {loading && <div>Loading...</div>} */}
+                {suggestions.map(suggestion => {
+                  const className = suggestion.active
+                    ? "suggestion-item--active"
+                    : "suggestion-item";
+                  const style = suggestion.active
+                    ? { backgroundColor: "#fafafa", cursor: "pointer" }
+                    : { backgroundColor: "#ffffff", cursor: "pointer" };
+                  return (
+                    <div
+                      {...getSuggestionItemProps(suggestion, {
+                        className,
+                        style
+                      })}
+                    >
+                      {/* <Marker /> */}
+                      <span>{suggestion.description}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+            {/* <div className="autocomplete-dropdown-container">
               {loading && <div>Loading...</div>}
               {suggestions.map(suggestion => {
                 const className = suggestion.active
@@ -66,7 +91,7 @@ const Search = props => {
                   </div>
                 );
               })}
-            </div>
+            </div> */}
           </div>
         )}
       </PlacesAutocomplete>

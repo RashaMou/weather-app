@@ -14,6 +14,7 @@
     width: 100%;
     height: 2.3rem;
     padding-left: 10px;
+    border: 1px solid grey;
   }
 }
 
@@ -21,13 +22,19 @@
   display: flex;
 }
 
-.search-autocomplete-container {
-  border-bottom: honeydew;
-  border-left: honeydew;
-  border-right: honeydew;
-  border-top: 1px solid #e6e6e6;
+.autocomplete-dropdown-container {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 0 0 2px 2px;
+  border-left: 1px solid #2c2d3e;
+  border-right: 1px solid #2c2d3e;
+  // border-bottom: 1px solid #2c2d3e;
+  border-top: 0;
+
+  .suggestion-item,
+  .suggestion-item--active {
+    border-bottom: 1px solid grey;
+    padding: 7px;
+  }
 }
 
 .search-button-box {
