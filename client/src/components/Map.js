@@ -1,17 +1,10 @@
-import React, { useEffect, useContext } from "react";
-import axios from "axios";
+import React, { useContext } from "react";
+
 import { GoogleMap, withScriptjs, withGoogleMap } from "react-google-maps";
 import LocationContext from "../contexts/LocationContext";
-import getInitialUserLocation from "../helpers/getInitialUserLocation";
 
 const BackgroundMap = () => {
-  const {
-    setCoordinates,
-    setForecast,
-    coordinates,
-    setCity,
-    city
-  } = useContext(LocationContext);
+  const { coordinates } = useContext(LocationContext);
 
   let lat = coordinates.lat;
   let lng = coordinates.lng;
@@ -43,7 +36,7 @@ const BackgroundMap = () => {
       defaultZoom={10}
       defaultOptions={{
         disableDefaultUI: true,
-        mapTypeId: "satellite"
+        mapTypeId: "satellite",
       }}
       center={{ lat, lng }}
     ></GoogleMap>

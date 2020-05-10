@@ -10,14 +10,14 @@ const WeatherCard = () => {
       <div className="position-div">
         <div className="inner-flex">
           <Search />
-          <div className="icons">
+          {/* <div className="icons">
             <div className="search-button-box">
               <SearchIcon />
             </div>
             <div className="location-button-box">
               <MyLocation />
             </div>
-          </div>
+          </div> */}
         </div>
         <WeatherInfo />
       </div>

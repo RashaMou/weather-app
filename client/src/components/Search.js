@@ -3,16 +3,15 @@ import axios from "axios";
 import LocationContext from "../contexts/LocationContext";
 import PlacesAutocomplete, {
   geocodeByAddress,
-  getLatLng
+  getLatLng,
 } from "react-places-autocomplete";
-import { ReactComponent as Marker } from "../assets/icons/ui/marker.svg";
 
-const Search = props => {
+const Search = (props) => {
   const { setCity, setCoordinates, setForecast } = useContext(LocationContext);
 
   const [location, setLocation] = useState("");
 
-  const handleSelect = async value => {
+  const handleSelect = async (value) => {
     const results = await geocodeByAddress(value);
     const latLng = await getLatLng(results[0]);
     setCoordinates(latLng);
@@ -20,18 +19,18 @@ const Search = props => {
     setCity(value);
     axios
       .post("http://localhost:5000/api/weather", latLng)
-      .then(res => {
+      .then((res) => {
         setForecast(res.data.currently);
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   const searchOptions = {
-    types: ["(cities)"]
+    types: ["(cities)"],
   };
 
   return (
-    <>
+    <div>
       <PlacesAutocomplete
         value={location}
         onChange={setLocation}
@@ -44,13 +43,13 @@ const Search = props => {
             <input
               {...getInputProps({
                 placeholder: "Search...",
-                className: "location-search-input"
+                className: "location-search-input",
               })}
             />
             {location.length > 0 && (
               <div className="autocomplete-dropdown-container">
                 {/* {loading && <div>Loading...</div>} */}
-                {suggestions.map(suggestion => {
+                {suggestions.map((suggestion) => {
                   const className = suggestion.active
                     ? "suggestion-item--active"
                     : "suggestion-item";
@@ -61,7 +60,7 @@ const Search = props => {
                     <div
                       {...getSuggestionItemProps(suggestion, {
                         className,
-                        style
+                        style,
                       })}
                     >
                       {/* <Marker /> */}
@@ -71,31 +70,10 @@ const Search = props => {
                 })}
               </div>
             )}
-            {/* <div className="autocomplete-dropdown-container">
-              {loading && <div>Loading...</div>}
-              {suggestions.map(suggestion => {
-                const className = suggestion.active
-                  ? "suggestion-item--active"
-                  : "suggestion-item";
-                const style = suggestion.active
-                  ? { backgroundColor: "#fafafa", cursor: "pointer" }
-                  : { backgroundColor: "#ffffff", cursor: "pointer" };
-                return (
-                  <div
-                    {...getSuggestionItemProps(suggestion, {
-                      className,
-                      style
-                    })}
-                  >
-                    <span>{suggestion.description}</span>
-                  </div>
-                );
-              })}
-            </div> */}
           </div>
         )}
       </PlacesAutocomplete>
-    </>
+    </div>
   );
 };
 

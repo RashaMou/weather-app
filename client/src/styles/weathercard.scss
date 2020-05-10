@@ -13,10 +13,13 @@
     display: flex;
     justify-content: space-around;
   }
+  .inner-flex > div:nth-child(1) {
+    flex: 1;
+  }
 }
 
 .search-container {
-  width: 80%;
+  width: 100%;
   .location-search-input {
     width: 100%;
     height: 2.3rem;
@@ -35,8 +38,9 @@
   border-left: 1px solid #2c2d3e;
   border-right: 1px solid #2c2d3e;
   border-top: 0;
-  position: relative;
-  z-index: 1500;
+  position: absolute;
+  z-index: 2000;
+  width: 100%;
 
   .suggestion-item,
   .suggestion-item--active {
@@ -68,16 +72,14 @@
 .position-div {
   position: relative;
   width: 100%;
-  // border: 1px solid blue;
 }
 
 .weather-info {
-  // border: 1px solid red;
   position: absolute;
   z-index: 1300;
   top: 100%;
   width: 100%;
-  padding: 10px;
+  padding-top: 20px;
 
   .city {
     font-size: 1.5rem;
