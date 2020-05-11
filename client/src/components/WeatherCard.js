@@ -26,14 +26,6 @@ const WeatherCard = (props) => {
       <div className="position-div">
         <div className="inner-flex">
           <Search />
-          {/* <div className="icons">
-            <div className="search-button-box">
-              <SearchIcon />
-            </div>
-            <div className="location-button-box">
-              <MyLocation />
-            </div>
-          </div> */}
         </div>
         {props.loading ? (
           <BeatLoader css={override} size={20} color={"#32a290"} />

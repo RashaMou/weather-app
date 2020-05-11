@@ -20,6 +20,7 @@ export const getUserLocation = (
         lng: pos.longitude,
       })
       .then((res) => {
+        console.log("res", res.data);
         setForecast({
           ...res.data.currently,
           scale: "farenheit",
