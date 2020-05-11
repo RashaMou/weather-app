@@ -12,11 +12,7 @@ const GlobalState = (props) => {
   const lat = coordinates.lat;
   const lng = coordinates.lng;
 
-  const [forecast, setForecast] = useState({
-    summary: "",
-    icon: "",
-    temperature: "",
-  });
+  const [forecast, setForecast] = useState({});
 
   return (
     <LocationContext.Provider

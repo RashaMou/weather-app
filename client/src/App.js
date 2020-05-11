@@ -15,6 +15,7 @@ function App() {
     lng,
     city,
     setForecast,
+    forecast,
   } = useContext(LocationContext);
 
   useEffect(() => {
@@ -22,8 +23,13 @@ function App() {
     axios
       .post("http://localhost:5000/api/weather", coordinates)
       .then((res) => {
-        console.log("res.data weather", res.data);
-        setForecast(res.data.currently);
+        console.log("res", res.data);
+        setForecast({
+          summary: res.data.data.currently.summary,
+          icon: res.data.data.currently.icon,
+          temperature: res.data.data.currently.temperature,
+          scale: "farenheit",
+        });
         setCoordinates({ lat: res.data.latitude, lng: res.data.longitude });
       })
       .catch((err) => console.log(err));
@@ -31,12 +37,10 @@ function App() {
     axios
       .post("http://localhost:5000/api/reversegeocode", { lat, lng })
       .then((res) => {
-        console.log("res.data", res.data);
+        // console.log("res.data", res.data);
         // setCity(res.data[0].formatted_address);
       })
       .catch((err) => console.log(err));
-
-    console.log("city from map useeffect", city);
   }, []);
 
   return (

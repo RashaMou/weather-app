@@ -2,11 +2,10 @@
   z-index: 1000;
   position: fixed;
   max-width: 800px;
-  width: 100%;
+  width: 60%;
   top: 30%;
   display: flex;
   flex-direction: column;
-  height: 20rem;
   border: 1px solid green;
 
   .inner-flex {
@@ -86,7 +85,17 @@
 
   .city {
     font-size: 1.5rem;
+    margin-bottom: 1rem;
   }
+
+  .forecast {
+    margin-bottom: 0.2rem;
+  }
+}
+
+.horizontal-line {
+  border-bottom: 1px solid lightgrey;
+  margin: 50px 0 20px 0;
 }
 
 .icon-temp {
@@ -106,5 +115,35 @@
 
   span {
     margin-right: 0.2rem;
+    &:hover {
+      cursor: pointer;
+    }
   }
+}
+.details-container {
+  margin-top: 3.8rem;
+  display: flex;
+  justify-content: space-evenly;
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    p {
+      margin-bottom: 1rem;
+      font-size: 0.8rem;
+
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .col-1 {
+    margin-right: 20px;
+  }
+}
+
+.weather-flex-container {
+  display: flex;
+  justify-content: space-between;
 }
