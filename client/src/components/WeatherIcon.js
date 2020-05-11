@@ -13,23 +13,23 @@ import WeatherInfo from "./WeatherInfo";
 const WeatherIcon = (props) => {
   switch (props.icon) {
     case "clear-night":
-      return <ClearNight height="auto" width="60px" />;
+      return <ClearNight height="auto" width="70px" />;
     case "clear-day":
-      return <ClearDay height="auto" width="60px" />;
+      return <ClearDay height="auto" width="70px" />;
     case "rain":
-      return <Rain height="auto" width="60px" />;
+      return <Rain height="auto" width="70px" />;
     case "sleet":
-      return <Sleet height="auto" width="60px" />;
+      return <Sleet height="auto" width="70px" />;
     case "snow":
-      return <Snow height="auto" width="60px" />;
+      return <Snow height="auto" width="70px" />;
     case "wind":
-      return <Wind height="auto" width="60px" />;
+      return <Wind height="auto" width="70px" />;
     case "cloudy":
-      return <Cloudy height="auto" width="60px" />;
+      return <Cloudy height="auto" width="70px" />;
     case "partly-cloudy-day":
-      return <PartlyCloudyDay height="auto" width="60px" />;
+      return <PartlyCloudyDay height="auto" width="70px" />;
     case "partly-cloudy-night":
-      return <PartlyCloudyNight height="auto" width="60px" />;
+      return <PartlyCloudyNight height="auto" width="70px" />;
     default:
       return null;
   }

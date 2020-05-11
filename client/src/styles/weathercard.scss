@@ -74,14 +74,37 @@
   width: 100%;
 }
 
+.weather-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .weather-info {
-  position: absolute;
-  z-index: 1300;
   top: 100%;
   width: 100%;
   padding-top: 20px;
 
   .city {
     font-size: 1.5rem;
+  }
+}
+
+.icon-temp {
+  display: flex;
+  align-items: center;
+
+  .temp {
+    font-size: 2.5rem;
+  }
+}
+
+.degrees {
+  font-size: 0.8rem;
+  align-self: flex-start;
+  margin-top: 18px;
+  margin-left: 0.2rem;
+
+  span {
+    margin-right: 0.2rem;
   }
 }

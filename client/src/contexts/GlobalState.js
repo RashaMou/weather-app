@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 import LocationContext from "./LocationContext";
 
-const GlobalState = props => {
+const GlobalState = (props) => {
   const [city, setCity] = useState("");
 
   const [coordinates, setCoordinates] = useState({
     lat: null,
-    lng: null
-  });
-
-  const [forecast, setForecast] = useState({
-    summary: "",
-    icon: "",
-    temperature: ""
+    lng: null,
   });
 
   const lat = coordinates.lat;
   const lng = coordinates.lng;
+
+  const [forecast, setForecast] = useState({
+    summary: "",
+    icon: "",
+    temperature: "",
+  });
 
   return (
     <LocationContext.Provider
@@ -27,8 +27,8 @@ const GlobalState = props => {
         lng,
         setCoordinates,
         coordinates,
+        forecast,
         setForecast,
-        forecast
       }}
     >
       {props.children}

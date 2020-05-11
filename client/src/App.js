@@ -13,28 +13,28 @@ function App() {
     coordinates,
     lat,
     lng,
+    city,
     setForecast,
-    city
   } = useContext(LocationContext);
 
   useEffect(() => {
     getInitialUserLocation(setCoordinates);
     axios
       .post("http://localhost:5000/api/weather", coordinates)
-      .then(res => {
+      .then((res) => {
         console.log("res.data weather", res.data);
         setForecast(res.data.currently);
         setCoordinates({ lat: res.data.latitude, lng: res.data.longitude });
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
 
     axios
       .post("http://localhost:5000/api/reversegeocode", { lat, lng })
-      .then(res => {
+      .then((res) => {
         console.log("res.data", res.data);
         // setCity(res.data[0].formatted_address);
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
 
     console.log("city from map useeffect", city);
   }, []);
@@ -56,5 +56,3 @@ function App() {
 }
 
 export default App;
-
-// <div>Icons made by <a href="https://www.flaticon.com/authors/srip" title="srip">srip</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
