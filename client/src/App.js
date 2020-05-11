@@ -13,34 +13,47 @@ function App() {
     coordinates,
     lat,
     lng,
+    setCity,
     city,
     setForecast,
     forecast,
   } = useContext(LocationContext);
 
   useEffect(() => {
-    getInitialUserLocation(setCoordinates);
-    axios
-      .post("http://localhost:5000/api/weather", coordinates)
-      .then((res) => {
-        console.log("res", res.data);
-        setForecast({
-          summary: res.data.data.currently.summary,
-          icon: res.data.data.currently.icon,
-          temperature: res.data.data.currently.temperature,
-          scale: "farenheit",
-        });
-        setCoordinates({ lat: res.data.latitude, lng: res.data.longitude });
-      })
-      .catch((err) => console.log(err));
+    navigator.geolocation.getCurrentPosition(success, error);
 
-    axios
-      .post("http://localhost:5000/api/reversegeocode", { lat, lng })
-      .then((res) => {
-        // console.log("res.data", res.data);
-        // setCity(res.data[0].formatted_address);
-      })
-      .catch((err) => console.log(err));
+    function error(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
+
+    function success(position) {
+      const pos = position.coords;
+      console.log("position", position.coords);
+      axios
+        .post("http://localhost:5000/api/weather", {
+          lat: pos.latitude,
+          lng: pos.longitude,
+        })
+        .then((res) => {
+          setForecast({
+            ...res.data.currently,
+            scale: "farenheit",
+          });
+          setCoordinates({ lat: res.data.latitude, lng: res.data.longitude });
+        })
+        .catch((err) => console.log(err));
+
+      axios
+        .post("http://localhost:5000/api/reversegeocode", {
+          lat: pos.latitude,
+          lng: pos.longitude,
+        })
+        .then((res) => {
+          console.log("res from reverse geocode", res.data);
+          setCity(res.data[0].formatted_address);
+        })
+        .catch((err) => console.log(err));
+    }
   }, []);
 
   return (

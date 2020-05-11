@@ -64,7 +64,7 @@ const WeatherInfo = () => {
       <div className="details-container">
         <div className="col col-1">
           <p>
-            Humidity: <span>{forecast.humidity * 100}%</span>
+            Humidity: <span>{(forecast.humidity * 100).toFixed()}%</span>
           </p>
           <p>
             Precipation: <span>{forecast.precipIntensity}%</span>
@@ -78,7 +78,8 @@ const WeatherInfo = () => {
             Dew Point: <span>{forecast.dewPoint} &deg;F</span>
           </p>
           <p>
-            Cloud Coverage: <span>{forecast.cloudCover * 100}%</span>
+            Cloud Coverage:{" "}
+            <span>{(forecast.cloudCover * 100).toFixed()}%</span>
           </p>
           <p>
             Visibility: <span>{forecast.visibility} miles</span>
