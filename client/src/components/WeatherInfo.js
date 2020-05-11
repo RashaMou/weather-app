@@ -5,7 +5,7 @@ import WeatherIcon from "./WeatherIcon";
 
 const WeatherInfo = () => {
   const { city, forecast, setForecast } = useContext(LocationContext);
-  const date = convertTimestamp(forecast.time);
+  const date = convertTimestamp(Date.now());
   const temp = Math.ceil(forecast.temperature);
 
   useEffect(() => {

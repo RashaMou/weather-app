@@ -1,5 +1,5 @@
-export function convertTimestamp(timestamp) {
-  const d = new Date(timestamp * 1000);
+export function convertTimestamp() {
+  const d = new Date();
   const year = d.getFullYear();
   const day = d.toLocaleString("default", { weekday: "long" });
   const month = d.toLocaleString("default", { month: "long" });
