@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import LocationContext from "../contexts/LocationContext";
 import { convertTimestamp } from "../helpers/convertTimestamp";
 import WeatherIcon from "./WeatherIcon";
@@ -7,11 +7,6 @@ const WeatherInfo = () => {
   const { city, forecast, setForecast } = useContext(LocationContext);
   const date = convertTimestamp(Date.now());
   const temp = Math.ceil(forecast.temperature);
-
-  useEffect(() => {
-    // console.log("scale", forecast.scale);
-    console.log("forecast", forecast);
-  });
 
   const convertTemp = (temp) => {
     if (forecast.scale === "farenheit") {

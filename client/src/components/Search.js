@@ -30,50 +30,48 @@ const Search = (props) => {
   };
 
   return (
-    <div>
-      <PlacesAutocomplete
-        value={location}
-        onChange={setLocation}
-        onSelect={handleSelect}
-        searchOptions={searchOptions}
-        highlightFirstSuggestion={true}
-      >
-        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div className="search-container">
-            <input
-              {...getInputProps({
-                placeholder: "Search...",
-                className: "location-search-input",
+    <PlacesAutocomplete
+      value={location}
+      onChange={setLocation}
+      onSelect={handleSelect}
+      searchOptions={searchOptions}
+      highlightFirstSuggestion={true}
+    >
+      {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+        <div className="search-container">
+          <input
+            {...getInputProps({
+              placeholder: "Search...",
+              className: "location-search-input",
+            })}
+          />{" "}
+          {location.length > 0 && (
+            <div className="autocomplete-dropdown-container">
+              {/* {loading && <div>Loading...</div>} */}
+              {suggestions.map((suggestion) => {
+                const className = suggestion.active
+                  ? "suggestion-item--active"
+                  : "suggestion-item";
+                const style = suggestion.active
+                  ? { backgroundColor: "#fafafa", cursor: "pointer" }
+                  : { backgroundColor: "#ffffff", cursor: "pointer" };
+                return (
+                  <div
+                    {...getSuggestionItemProps(suggestion, {
+                      className,
+                      style,
+                    })}
+                  >
+                    {/* <Marker /> */}
+                    <span>{suggestion.description}</span>
+                  </div>
+                );
               })}
-            />
-            {location.length > 0 && (
-              <div className="autocomplete-dropdown-container">
-                {/* {loading && <div>Loading...</div>} */}
-                {suggestions.map((suggestion) => {
-                  const className = suggestion.active
-                    ? "suggestion-item--active"
-                    : "suggestion-item";
-                  const style = suggestion.active
-                    ? { backgroundColor: "#fafafa", cursor: "pointer" }
-                    : { backgroundColor: "#ffffff", cursor: "pointer" };
-                  return (
-                    <div
-                      {...getSuggestionItemProps(suggestion, {
-                        className,
-                        style,
-                      })}
-                    >
-                      {/* <Marker /> */}
-                      <span>{suggestion.description}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </div>
-        )}
-      </PlacesAutocomplete>
-    </div>
+            </div>
+          )}
+        </div>
+      )}
+    </PlacesAutocomplete>
   );
 };
 

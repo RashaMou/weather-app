@@ -11,9 +11,7 @@
   .inner-flex {
     display: flex;
     justify-content: space-around;
-  }
-  .inner-flex > div:nth-child(1) {
-    flex: 1;
+    flex-wrap: nowrap;
   }
 }
 

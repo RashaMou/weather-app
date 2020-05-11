@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { ReactComponent as ClearDay } from "../assets/icons/weather/clear_day.svg";
 import { ReactComponent as ClearNight } from "../assets/icons/weather/clear_night.svg";
 import { ReactComponent as Cloudy } from "../assets/icons/weather/cloudy.svg";
@@ -8,7 +8,6 @@ import { ReactComponent as Rain } from "../assets/icons/weather/rain.svg";
 import { ReactComponent as Sleet } from "../assets/icons/weather/sleet.svg";
 import { ReactComponent as Snow } from "../assets/icons/weather/snow.svg";
 import { ReactComponent as Wind } from "../assets/icons/weather/wind.svg";
-import WeatherInfo from "./WeatherInfo";
 
 const WeatherIcon = (props) => {
   switch (props.icon) {

@@ -1,23 +1,13 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import Map from "./components/Map";
 import axios from "axios";
-
 import WeatherCard from "./components/WeatherCard";
 import LocationContext from "./contexts/LocationContext";
-import getInitialUserLocation from "./helpers/getInitialUserLocation";
 
 function App() {
   const apiKey = "AIzaSyBcv2QVgQ6oRSdKqZDOKxAGAicxoEBZTBo";
-  const {
-    setCoordinates,
-    coordinates,
-    lat,
-    lng,
-    setCity,
-    city,
-    setForecast,
-    forecast,
-  } = useContext(LocationContext);
+  const { setCoordinates, setCity, setForecast } = useContext(LocationContext);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(success, error);
@@ -28,7 +18,6 @@ function App() {
 
     function success(position) {
       const pos = position.coords;
-      console.log("position", position.coords);
       axios
         .post("http://localhost:5000/api/weather", {
           lat: pos.latitude,
@@ -49,8 +38,8 @@ function App() {
           lng: pos.longitude,
         })
         .then((res) => {
-          console.log("res from reverse geocode", res.data);
           setCity(res.data[0].formatted_address);
+          setIsLoading(false);
         })
         .catch((err) => console.log(err));
     }
@@ -68,7 +57,7 @@ function App() {
         mapElement={<div style={{ height: "100%" }} />}
       />
       <div className="flex-container">
-        <WeatherCard />
+        <WeatherCard loading={isLoading} />
       </div>
     </div>
   );
