@@ -53,7 +53,7 @@ const Search = (props) => {
                   ? "suggestion-item--active"
                   : "suggestion-item";
                 const style = suggestion.active
-                  ? { backgroundColor: "#fafafa", cursor: "pointer" }
+                  ? { backgroundColor: "#36D7B7", cursor: "pointer" }
                   : { backgroundColor: "#ffffff", cursor: "pointer" };
                 return (
                   <div

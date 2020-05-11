@@ -4,8 +4,8 @@ import WeatherInfo from "./WeatherInfo";
 import BeatLoader from "react-spinners/BeatLoader";
 import { css } from "@emotion/core";
 
-// import { ReactComponent as SearchIcon } from "../assets/icons/ui/search.svg";
-// import { ReactComponent as MyLocation } from "../assets/icons/ui/my_location.svg";
+import { ReactComponent as SearchIcon } from "../assets/icons/ui/search.svg";
+import { ReactComponent as MyLocation } from "../assets/icons/ui/my_location.svg";
 
 const WeatherCard = (props) => {
   const override = css`
@@ -33,6 +33,11 @@ const WeatherCard = (props) => {
         ) : (
           <WeatherInfo />
         )}
+      </div>
+      <div className="icons">
+        <div className="location-button-box">
+          <MyLocation />
+        </div>
       </div>
     </div>
   );
