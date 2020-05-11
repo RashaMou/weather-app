@@ -64,6 +64,12 @@
   padding: 10px;
   max-height: 2.3rem;
   margin-left: 15px;
+  &:hover {
+    cursor: pointer;
+  }
+  &:active {
+    background-color: #79e7d2;
+  }
 }
 
 .position-div {
