@@ -18,7 +18,7 @@ const Search = (props) => {
     setLocation("");
     setCity(value);
     axios
-      .post("http://localhost:5000/api/weather", latLng)
+      .post("https://rasha-weather-app.herokuapp.com/api/weather", latLng)
       .then((res) => {
         setForecast(res.data.currently);
       })

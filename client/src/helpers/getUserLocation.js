@@ -15,7 +15,7 @@ export const getUserLocation = (
   function success(position) {
     const pos = position.coords;
     axios
-      .post("http://localhost:5000/api/weather", {
+      .post("https://rasha-weather-app.herokuapp.com/api/weather", {
         lat: pos.latitude,
         lng: pos.longitude,
       })
@@ -30,7 +30,7 @@ export const getUserLocation = (
       .catch((err) => console.log(err));
 
     axios
-      .post("http://localhost:5000/api/reversegeocode", {
+      .post("https://rasha-weather-app.herokuapp.com/api/reversegeocode", {
         lat: pos.latitude,
         lng: pos.longitude,
       })
