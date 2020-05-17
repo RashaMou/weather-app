@@ -11,6 +11,10 @@
     justify-content: space-around;
     flex-wrap: nowrap;
   }
+
+  @media screen and (max-width: $phone) {
+    width: 100%;
+  }
 }
 
 .search-container {
@@ -147,9 +151,17 @@
   .col-1 {
     margin-right: 20px;
   }
+
+  @media screen and (max-width: $phone) {
+    margin-top: 20px;
+  }
 }
 
 .weather-flex-container {
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: $phone) {
+    flex-direction: column;
+  }
 }
